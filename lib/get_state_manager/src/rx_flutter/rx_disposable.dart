@@ -18,7 +18,7 @@ abstract class DisposableInterface extends GetLifeCycle {
   void onInit() {
     super.onInit();
 
-    Get.engine.addPostFrameCallback((_) => onReady());
+    WidgetsBinding.instance.addPostFrameCallback((_) => onReady());
   }
 
   /// Called 1 frame after onInit(). It is the perfect place to enter

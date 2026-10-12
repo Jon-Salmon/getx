@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import '../../get_core/get_core.dart';
-import '../../get_navigation/src/router_report.dart';
 import 'lifecycle.dart';
 
 class InstanceInfo {
@@ -205,9 +204,9 @@ class GetInstance {
       i = _startController<S>(tag: name);
       if (_singl[key]!.isSingleton!) {
         _singl[key]!.isInit = true;
-        if (Get.smartManagement != SmartManagement.onlyBuilder) {
-          RouterReportManager.reportDependencyLinkedToRoute(_getKey(S, name));
-        }
+        // if (Get.smartManagement != SmartManagement.onlyBuilder) {
+        //   RouterReportManager.reportDependencyLinkedToRoute(_getKey(S, name));
+        // }
       }
     }
     return i;
@@ -257,9 +256,9 @@ class GetInstance {
       } else {
         Get.log('Instance "$S" with tag "$tag" has been initialized');
       }
-      if (!_singl[key]!.isSingleton!) {
-        RouterReportManager.appendRouteByCreate(i);
-      }
+      // if (!_singl[key]!.isSingleton!) {
+      //   RouterReportManager.appendRouteByCreate(i);
+      // }
     }
     return i;
   }
@@ -323,7 +322,7 @@ class GetInstance {
   bool resetInstance({bool clearRouteBindings = true}) {
     //  if (clearFactory) _factory.clear();
     // deleteAll(force: true);
-    if (clearRouteBindings) RouterReportManager.clearRouteKeys();
+    // if (clearRouteBindings) RouterReportManager.clearRouteKeys();
     _singl.clear();
 
     return true;
